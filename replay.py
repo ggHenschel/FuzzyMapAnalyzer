@@ -239,7 +239,7 @@ def Rebuild_class_log(log, replay_result,delimit=";",case_atribute=0,legend=True
 
     return name
 
-def Rebuild_Atributes_Log(log, replay_result,delimit=";",case_atribute=0,legend=True):
+def Rebuild_Atributes_Log(log, replay_result,save_path=None,delimit=";",case_atribute=0,legend=True):
     dictq = dict()
 
     def txdictq(i):
@@ -257,10 +257,13 @@ def Rebuild_Atributes_Log(log, replay_result,delimit=";",case_atribute=0,legend=
     read = csv.reader(file,delimiter=delimit,dialect=csv.excel,)
     rows = []
 
-
-    name = os.path.basename(log).split(sep=".")[0]
-    name = "new_log_of_"+name+" "+time.asctime()+".csv"
-    new_log = open(name,mode="x")
+    if save_path is None:
+        name = os.path.basename(log).split(sep=".")[0]
+        name = "new_log_of_"+name+" "+time.asctime()+".csv"
+        new_log = open(name, mode="x")
+    else:
+        new_log = save_path
+        name = new_log.name
     write_f = csv.writer(new_log, delimiter=delimit)
 
     for item in read:

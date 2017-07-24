@@ -1,0 +1,118 @@
+#:kivy 1.9.1
+
+<SimpleGuiMenu>:
+    widht:900
+    height:720
+    f_path: path_text_input
+    f_dados: dados_text_input
+    f_attr: attributes_text_input
+    f_text_output: text_output
+    f_start_input: start_input
+    f_end_input: end_input
+    GridLayout:
+        size: root.size
+        rows: 5
+        padding: 20
+        spacing: 10
+        BoxLayout:
+            size_hint_y: 1
+            Label:
+                text: "Path"
+                size_hint_x: 1
+                size_hint_y: 1
+            TextInput:
+                id: path_text_input
+                size_hint_x: 4
+                size_hint_y: 1
+            Button:
+                text: "Carregar FuzzyMap"
+                size_hint_x: 2
+                size_hint_y: 1
+                on_press: root.LoadGraph()
+        BoxLayout:
+            size_hint_y: 1
+            Label:
+                text: "Eventos"
+                size_hint_x: 1
+                size_hint_y: 1
+            TextInput:
+                id: dados_text_input
+                size_hint_x: 4
+                size_hint_y: 1
+            Button:
+                text: "Carregar Log"
+                size_hint_x: 2
+                size_hint_y: 1
+                on_press: root.LoadLog()
+        BoxLayout:
+            size_hint_y: 1
+            Label:
+                text: "Atributos"
+                size_hint_x: 1
+                size_hint_y: 1
+            TextInput:
+                id: attributes_text_input
+                size_hint_x: 4
+                size_hint_y: 1
+            Button:
+                text: "Carregar Atributos"
+                size_hint_x: 2
+                size_hint_y: 1
+                on_press: root.LoadAttr()
+        BoxLayout:
+            size_hint_y: 1
+            Label:
+                size_hint_x: 1
+                text: "Evento\nInicio"
+            TextInput:
+                size_hint_x: 2
+                id: start_input
+            Label:
+                size_hint_x: 1
+                text: "Evento\nFinal"
+            TextInput:
+                size_hint_x: 2
+                id: end_input
+            Label:
+                size_hint_x: 0.1
+                text: " "
+            Button:
+                text: "Caminho\nOuro"
+                on_press: root.FindGoldPath()
+            Button:
+                text: "Place\nHolder"
+                on_press:
+            Button:
+                text: "Place\nHolder"
+                on_press:
+        BoxLayout:
+            size_hint_y: 10
+            orientation: "horizontal"
+            BoxLayout:
+                orientation: "vertical"
+                spacing: 5
+                size_hint_x: 2
+                Button:
+                    text: "Centralidade"
+                    on_press: root.Centralidades()
+                Button:
+                    text: "Grau de Entrada"
+                    on_press: root.In_Degree_Centrality()
+                Button:
+                    text: "Grau de Saida"
+                    on_press: root.Out_Degree_Centrality()
+                Button:
+                    text: "Grau de Intermediação"
+                    on_press: root.Betweeness_Centrality()
+                Button:
+                    text: "Achar Ciclos"
+                    on_press: root.FindCicles()
+            Label:
+                size_hint_x: 0.1
+                text: ""
+            BoxLayout:
+                size_hint_x: 8
+                TextInput:
+                    id: text_output
+                    auto_indent: True
+
