@@ -37,12 +37,11 @@ class Analiser:
         ciclos = path_analisys.FindCyles(self.Graph)
         return ciclos
 
-    def case_report(self,log):
+    def case_report(self,log,arquivo=None):
         if self.replay_results is None:
             self.replay(log)
-        r = replay.export_replay_results(self.replay_results)
-        s = replay.rebuild_event_log(log,self.replay_results)
-        return (r, s)
+        r = replay.export_replay_results(self.replay_results,file=arquivo)
+        return r
 
     def Class_Assistant(self,log,file,save_path=None):
         if self.replay_results is None:

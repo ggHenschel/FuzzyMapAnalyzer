@@ -5,16 +5,11 @@ import analyser
 if len(sys.argv)==1:
 
     print("Running in Graphical Interface")
-    option = input("Type 1 for Tkinter or 2 for kivy")
-    if int(option)==1:
-        import tkMenu
-        M = tkMenu.GUIFactory().create()
-    elif int(option)==2:
-        import kivyMenu
-        M = kivyMenu.SimpleGuiMenuApp()
-    else:
-        print("Invalid Option")
-        quit(-1)
+
+    #import tkMenu
+    #M = tkMenu.GUIFactory().create()
+    import QtGUI
+    M = QtGUI.AppMainWindow()
 elif len(sys.argv)==2:
     import textMenu
     An = analyser.Analiser(sys.argv[1])

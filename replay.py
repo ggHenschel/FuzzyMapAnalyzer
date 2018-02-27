@@ -152,10 +152,12 @@ def replay_log_perc(eventLog,Graph):
         n_seq_fail_t+=n_seq_fail
     return (cases_t,fail_cases,n_seq_t,n_seq_fail_t)
 
-def export_replay_results(report):
+def export_replay_results(report,file=None):
     name = "report_log " + time.asctime() + ".txt"
-    file = open(name, mode='w')
+    if file is None:
+        file = open(name, mode='w')
     file.write("case;aproval;anotation\n")
+
     for (case,aproval,anotations) in report:
         line = str(case)+";"
         if aproval:
@@ -255,7 +257,6 @@ def Rebuild_Atributes_Log(log, replay_result,save_path=None,delimit=";",case_atr
             dictq[case] = "Não Conforme"
     file = open(log)
     read = csv.reader(file,delimiter=delimit,dialect=csv.excel,)
-    rows = []
 
     if save_path is None:
         name = os.path.basename(log).split(sep=".")[0]
@@ -264,7 +265,7 @@ def Rebuild_Atributes_Log(log, replay_result,save_path=None,delimit=";",case_atr
     else:
         new_log = save_path
         name = new_log.name
-    write_f = csv.writer(new_log, delimiter=delimit)
+    write_f = csv.writer(new_log, delimiter=delimit, dialect=csv.excel, lineterminator='\n')
 
     for item in read:
         row = item

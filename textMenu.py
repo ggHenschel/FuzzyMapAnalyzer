@@ -8,7 +8,7 @@ class TextMenu:
         while True:
             option = input("Opções:\n0 - Exit Program\n1 - Import Event Log\n2 - Find Cycles\n3 - Find meanTime Between Process\n4 - Replay Event Log\n5 - Grau de Todos os Nós\n6 - Grau de Saida\n7 - Grau de Entrada\n8 - Centralidade\n9 - Intermediação\n10 - Exportar Novo Log de Attributos Com Nova Classe")
             if int(option)==0:
-                quit()
+                exit(0)
             elif int(option)==1:
                 self.log = input("Digite o caminho até o log: ")
             elif int(option)==2:
